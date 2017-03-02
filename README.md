@@ -8,6 +8,7 @@
 7. [Sets](https://github.com/obitech/python_cheatsheet#7-sets--)
 8. [Dictionaries](https://github.com/obitech/python_cheatsheet#8-dictionaries--)
 9. [Modules](https://github.com/obitech/python_cheatsheet#9-modules--)
+10. [I/O](https://github.com/obitech/python_cheatsheet#10-io--)
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
@@ -506,6 +507,98 @@ if __name__ == "__main__":
         sys.exit("Invalid # of arguments")
     print(add(sys.argv[1], sys.argv[2]))
 ```
+## 10. I/O ([->](https://docs.python.org/3/tutorial/inputoutput.html#input-and-output))
+### Advanced output formatting 
+Code | Function | Example
+--- | --- | ---
+``str()``| Converts value to human-readable string | ``str("test\n\n"``
+``repr()`` | Converts to interpreter-readable string | ``repr("test\n\n")``
+``str.rjust(int)`` | Align right, ``int`` width | ``"test".rjust(10)``
+``str.zfill(int)`` | Fill left side of expression with zeros, `int` width | ``"300".zfill(10)``
+
+```python
+# str()
+>>> s = "test\n\n"
+>>> print(str(s))
+test
+
+# repr()
+>>> print(repr(s))
+'test\n\n'
+
+# str.rjust() / .ljust(), .center() 
+>>> "test".rjust(10)
+'      test'
+>>> "test".ljust(10)
+'test      '
+>>> "test".center(10)
+'   test   '
+
+# zfill()
+>>> "300".zfill(10)
+'0000000300'
+```
+#### .format()
+Similar to ``printf()``:
+```python 
+# Basic usage
+>>> print("{} ** {} = {}".format(2, 3, 2 ** 3))
+2 ** 3 = 8
+
+# With indices
+>>> print("Don't compare {0} and {1}".format("apples", "oranges"))
+Don't compare apples and oranges
+>>> print("Don't compare {1} and {0}".format("apples", "oranges"))
+Don't compare oranges and apples
+
+# Takes keyword arguments too
+>>> print("The movie {movie} is {adjective}".format(movie="Fight Club", adjective="great"))
+The movie Fight Club is great
+
+# Format specifier
+>>> print("{0:b}".format(1332))
+10100110100
+
+>>> print("{:,}".format(1231231231332))
+1,231,231,231,332
+```
+* See [docs](https://docs.python.org/3/library/string.html#format-specification-mini-language) for more information on format specifier commands
+* See [docs](https://docs.python.org/3/library/string.html#formatexamples) for more format examples.
+
+### Files
+#### File object
+```python
+# file name, flag (optional)
+f = open("workfile", "w")
+...
+f.close()
+```
+Flag | Explanation
+--- | ---
+``'r'`` | Read only, __default__
+``'w'`` | Write only
+``'a'`` | Append
+``'r+'`` | Read/Write
+
+#### Read/Write
+```python
+# Read-loop
+>>> for line in f:
+...     print(line, end='')
+...
+This is the first line of the file.
+Second line of the file
+
+# Write to file, returns characters written
+>>> value = ('the answer', 42)
+>>> s = str(value)  # convert the tuple to string
+>>> f.write(s)
+18
+```
+
+* See [docs](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects) for basic file operations.
+* See [docs](https://docs.python.org/3/tutorial/inputoutput.html#saving-structured-data-with-json) for __JSON__ conversion.
+
 
 ## Sources
 * [docs.python.org](https://docs.python.org/3/)
