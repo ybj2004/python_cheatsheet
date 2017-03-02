@@ -7,6 +7,7 @@
 6. [Tuples](https://github.com/obitech/python_cheatsheet#6-tuples--)
 7. [Sets](https://github.com/obitech/python_cheatsheet#7-sets--)
 8. [Dictionaries](https://github.com/obitech/python_cheatsheet#8-dictionaries--)
+9. [Modules](https://github.com/obitech/python_cheatsheet#9-modules--)
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
@@ -465,6 +466,45 @@ False
 jim 40
 alex 19
 nicole 23
+```
+
+## 9. Modules ([->](https://docs.python.org/3/tutorial/modules.html))
+Create ``arithm.py``, save in same folder:
+```python
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
+def mult(a, b):
+    return a * b
+```
+Using it:
+```python
+# 1)
+import arithm
+print(arithm.add(23, 4))
+
+# 2)
+import arithm as a
+print(a.add(23, 4))
+
+# 3)
+from arithm import add, sub
+print(add(23, 4))
+print(sub(23, 4))
+```
+Use from command line:
+```python
+from arithm import add, sub
+
+# This checks if called from command line
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 3:
+        sys.exit("Invalid # of arguments")
+    print(add(sys.argv[1], sys.argv[2]))
 ```
 
 ## Sources
