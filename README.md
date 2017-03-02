@@ -1,7 +1,7 @@
 ## Index
-1. [Basics](https://github.com/obitech/python_cheatsheet#basics)
-2. [Strings](https://github.com/obitech/python_cheatsheet#strings)
-3. [Lists](https://github.com/obitech/python_cheatsheet#lists)
+1. [Basics](https://github.com/obitech/python_cheatsheet#1-basics--)
+2. [Strings](https://github.com/obitech/python_cheatsheet#2-strings--)
+3. [Lists](https://github.com/obitech/python_cheatsheet#3-lists--)
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
