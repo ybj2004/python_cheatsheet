@@ -2,9 +2,11 @@
 1. [Basics](https://github.com/obitech/python_cheatsheet#1-basics--)
 2. [Strings](https://github.com/obitech/python_cheatsheet#2-strings--)
 3. [Lists](https://github.com/obitech/python_cheatsheet#3-lists--)
-4. [Control flow]()
-5. [Functions]()
-6. [Tuples]()
+4. [Control flow](https://github.com/obitech/python_cheatsheet#4-control-flow--)
+5. [Functions](https://github.com/obitech/python_cheatsheet#5-functions--)
+6. [Tuples](https://github.com/obitech/python_cheatsheet#6-tuples--)
+7. [Sets](https://github.com/obitech/python_cheatsheet#7-sets--)
+8. [Dictionaries](https://github.com/obitech/python_cheatsheet#8-dictionaries--)
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
@@ -38,6 +40,21 @@ Valid name | Invalid name | Rule
 >>> b
 1
 ```
+
+### Comparisons
+
+Operator | Explanation
+--- | ---
+``>, >=`` | Less than, less than or equal
+``<, <=`` | Greater than, greater than or equal
+``==`` | Equal
+``!=`` | Not equal
+``is`` | __Object/type identity__
+``is not `` | negated object identity
+``a and b``| a & b
+``a or b`` | a \| b
+``not a`` | !a
+
 ## 2. Strings ([->](https://docs.python.org/3/tutorial/introduction.html#strings "Python 3.6 - Strings"))
 ### Printing
 ```python
@@ -225,6 +242,31 @@ All manipulation returns a new list.
 [1, 2, 3, 42, 5, 6, 25]
 ```
 For built-in list methods see [official doc](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists "Python 3.6 - More on Lists").
+
+### Looping
+```python
+>>> array = ['a', 'b', 'c'] 
+
+# .. in range()
+>>> for i in range(len(array)):
+...     print(i, array[i])
+... 
+0 a
+1 b
+2 c
+
+# .. in enumerate()
+>>> for i, v in enumerate(array):
+...     print(i, v)
+... 
+0 a
+1 b
+2 c
+
+# Using zip() to pair up two sequences
+pass
+```
+
 ## 4. Control flow ([->](https://docs.python.org/3/tutorial/controlflow.html))
 ### If/Else
 ```python
@@ -271,13 +313,7 @@ range(0, 10, 3)
 # -10, -40, -70
 range(-10, -100, -30):
 ```
-Iterating over indices:
-```python
-animals = ["cats", "dogs", "mammals", "birds", "fish", "reptiles"]
 
-for i in range(len(animals)):
-   print(i, animals[i])
-```
 ### pass-statement
 The ``pass`` statement does nothing but can function as a placeholder.
 
@@ -325,6 +361,110 @@ Lambdas are small, anonymous, one-line functions
 ## 6. Tuples ([->](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences))
 A Tuple is an __immutable__ list of values seperated by a comma and enclosed in parentheses:
 ```python
+# Tuple packing
+>>> tuple = 1, 2, 'test', 3
+>>> tuple
+(1, 2, 'test', 3)
+
+# Tuple unpacking
+>>> a, b, c, d = tuple
+>>> c
+'test'
+
+# Immutability
+>>> tuple[2] = 42
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+
+# Empty tuple:
+>>> tuple = ()
+>>> tuple
+()
+
+# Tuple with single item, add trailing comma
+>>> tuple = 42,
+>>> tuple
+(42,)
+```
+
+## 7. Sets ([->](https://docs.python.org/3/tutorial/datastructures.html#sets))
+Unordered collection of items with no duplicates.
+```python
+>>> fruits = {'apple', 'banana', 'apple', 'plum', 'pear', 'plum'}
+>>> fruits
+{'pear', 'banana', 'apple', 'plum'}
+
+# Create with set() method
+>>> letters1 = set('aaaadsdasddsasdgfgfsdfasd')
+>>> letters1
+{'g', 's', 'f', 'd', 'a'}
+
+>>> letters2 = set('kofkgskokdoasow')
+>>> letters2
+{'g', 's', 'k', 'f', 'o', 'd', 'w', 'a'}
+
+# Returns items in a but _not_ b
+>>> letters1 - letters2
+set()
+
+# Returns items in a _or_ b
+>>> letters1 | letters2
+{'g', 's', 'k', 'f', 'o', 'd', 'w', 'a'}
+
+# Returns items in a _and_ b
+>>> letters1 & letters2
+{'g', 's', 'f', 'd', 'a'}
+
+# Returns items in a _xor_ b
+>>> letters1 ^ letters2
+{'k', 'o', 'w'}
+```
+
+## 8. Dictionaries([->](https://docs.python.org/3/tutorial/datastructures.html#dictionaries))
+Array of key-value pairs. Key is immutable.
+```python
+# Creating a dictionary
+>>> students = {'jack': 32, 'john': 25, 'james': 19}
+>>> students
+{'jack': 32, 'john': 25, 'james': 19}
+
+# Create with dict() if keys are strings
+>>> students = dict(jim=40, alex=19, nicole=23)
+>>> students
+{'jim': 40, 'alex': 19, 'nicole': 23}
+
+# Adding a pair
+>>> students['felix'] = 22
+>>> students
+{'jack': 32, 'john': 25, 'james': 19, 'felix': 22}
+
+# Deleting a pair
+>>> del students['felix']
+>>> students
+{'jack': 32, 'john': 25, 'james': 19}
+
+# Displaying keys, returns view-object
+>>> list(students.keys())
+['jack', 'john', 'james', 'felix']
+>>> sorted(students.keys())
+['felix', 'jack', 'james', 'john']
+
+# Checking if key is in dict
+>>> 'james' in students
+True
+>>> 'nick' in students
+False
+```
+
+### Looping
+```python
+>>> for key, value in students.items():
+...     print(key, value)
+... 
+jim 40
+alex 19
+nicole 23
 ```
 
 ## Sources
