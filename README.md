@@ -35,7 +35,7 @@ Valid name | Invalid name | Rule
 >>> b
 1
 ```
-2. ## Strings ([->](https://docs.python.org/3/tutorial/introduction.html#strings "Python 3.6 - Strings"))
+## 2. Strings ([->](https://docs.python.org/3/tutorial/introduction.html#strings "Python 3.6 - Strings"))
 ### Printing
 ```python
 >>> 'A string'
@@ -137,7 +137,7 @@ TypeError: 'str' object does not support item assignment
 ```
 For built-in string methods see [official doc](https://docs.python.org/3/library/stdtypes.html#string-methods "Python 3.6 - String Methods").
 
-3. ## Lists ([->](https://docs.python.org/3/tutorial/introduction.html#lists "Python 3.6 - Lists"))
+## 3. Lists ([->](https://docs.python.org/3/tutorial/introduction.html#lists "Python 3.6 - Lists"))
 A list is an unordered, comma-seperated, [sequence](https://docs.python.org/3/glossary.html#term-sequence "Python 3.6 - Gloassary") of values of either the same of different types. The first index is zero. __Lists are mutable__.
 ```python
 # Standard list
