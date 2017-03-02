@@ -58,7 +58,7 @@ Operator | Explanation
 ``not a`` | !a
 
 ## 2. Strings ([->](https://docs.python.org/3/tutorial/introduction.html#strings "Python 3.6 - Strings"))
-### Printing
+### Basic printing
 ```python
 >>> 'A string'
 'A string'
@@ -268,6 +268,15 @@ For built-in list methods see [official doc](https://docs.python.org/3/tutorial/
 # Using zip() to pair up two sequences
 pass
 ```
+
+### Common operations
+Common __sequence__ operations (this is also applicable to strings):
+Operation | Result
+--- | ---
+``x in s`` | ``True`` if ``x`` is part of ``s``
+``s + t`` | Append ``t``to ``s``
+
+
 
 ## 4. Control flow ([->](https://docs.python.org/3/tutorial/controlflow.html))
 ### If/Else
