@@ -2,6 +2,9 @@
 1. [Basics](https://github.com/obitech/python_cheatsheet#1-basics--)
 2. [Strings](https://github.com/obitech/python_cheatsheet#2-strings--)
 3. [Lists](https://github.com/obitech/python_cheatsheet#3-lists--)
+4. [Control flow]()
+5. [Functions]()
+6. [Tuples]()
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
@@ -145,6 +148,17 @@ A list is an unordered, comma-seperated, [sequence](https://docs.python.org/3/gl
 >>> numbers
 [1, 2, 3, 4, 5, 6]
 
+# Create a list from a range
+>>> numbers = list(range(5))
+>>> numbers
+[0, 1, 2, 3, 4]
+
+# List comprehension
+>>> squares = [x**2 for x in range(10)]
+>>> squares
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+
 # Lists can be nested too
 >>> letters = ['a', 'b', 'c']
 >>> list = [numbers, letters]
@@ -155,6 +169,7 @@ A list is an unordered, comma-seperated, [sequence](https://docs.python.org/3/gl
 >>> list [1][2]
 'c'
 ```
+For more list comprehension see [docs](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions).
 
 ### Manipulation
 All manipulation returns a new list.
@@ -210,6 +225,107 @@ All manipulation returns a new list.
 [1, 2, 3, 42, 5, 6, 25]
 ```
 For built-in list methods see [official doc](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists "Python 3.6 - More on Lists").
+## 4. Control flow ([->](https://docs.python.org/3/tutorial/controlflow.html))
+### If/Else
+```python
+x = int(input("Please input integer: "))
+if x < 0:
+   print("x < 0")
+elif x > 0:
+   print("x > 0")
+else:
+   print("x = 0")
+
+# Output
+Please input integer: 42
+x > 0   
+```
+### For-loop
+This loops over every item in a sequence:
+```python
+animals = ["cats", "dogs", "birds", "fish"]
+
+for i in animals:
+   print("String:", i, "\t\nLength:", len(i))
+```
+For modifications, use a copy:
+```python
+animals = ["cats", "dogs", "mammals", "birds", "fish", "reptiles"]
+for i in animals[:]:
+   if len(i) > 6:
+      # Adds HUMANS at beginning of array if one item is longer than 6
+      animals.insert(0, "HUMANS")
+print(animals)
+['HUMANS', 'HUMANS', 'cats', 'dogs', 'mammals', 'birds', 'fish', 'reptiles']
+```
+### For..in..range()-loop
+This loops over a range of numbers:
+```python
+# loops from 0 - 9
+for x in range(10):
+   print(x)
+
+# 0, 3, 6, 9
+range(0, 10, 3)
+
+# -10, -40, -70
+range(-10, -100, -30):
+```
+Iterating over indices:
+```python
+animals = ["cats", "dogs", "mammals", "birds", "fish", "reptiles"]
+
+for i in range(len(animals)):
+   print(i, animals[i])
+```
+### pass-statement
+The ``pass`` statement does nothing but can function as a placeholder.
+
+## 5. Functions ([->](https://docs.python.org/3/tutorial/controlflow.html#defining-functions))
+### Docstring
+String literal at the beginning of function. Make sure to include this for doctumentation:
+```python
+def test():
+    """This is a test function"""
+    print("test")
+    
+# can be called by print(test.__doc__)
+```
+
+### Execution
+From the [docs](https://docs.python.org/3/tutorial/controlflow.html#defining-functions "Python 3.6 - Defining Functions"), emphasis by me:
+> The execution of a function introduces a new symbol table used for the local variables of the function. More precisely, all variable assignments in a function store the value in the local symbol table; whereas variable references first look in the local symbol table, then in the local symbol tables of enclosing functions, then in the global symbol table, and finally in the table of built-in names. Thus, __global variables cannot be directly assigned a value within a function__ (unless named in a global statement), although they may be referenced.
+
+And:
+>The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using __call by value__ (where the value is always an object reference, not the value of the object). (Actually, call by object reference would be a better description, since if a mutable object is passed, the caller will see any changes the callee makes to it (items inserted into a list.) When a function calls another function, a new local symbol table is created for that call
+
+### Arguments
+For default arguments, keyword arguments, argument lists, see [doc](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions).
+
+### Returning values
+Functions either returns a value or ``None``.
+```python
+numbers = [42]
+
+def add_numbers(temp):
+    for i in range(3):
+        temp.append(i)
+    # add_numbers(numbers) returns [42, 0, 1, 2]
+    return temp
+```
+
+### Lambdas
+Lambdas are small, anonymous, one-line functions
+```python
+>>> add = lambda n1, n2: n1+n2
+>>> add(2,3)
+5
+```
+
+## 6. Tuples ([->](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences))
+A Tuple is an __immutable__ list of values seperated by a comma and enclosed in parentheses:
+```python
+```
 
 ## Sources
 * [docs.python.org](https://docs.python.org/3/)
