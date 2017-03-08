@@ -9,6 +9,7 @@
 8. [Dictionaries](https://github.com/obitech/python_cheatsheet#8-dictionaries--)
 9. [Modules](https://github.com/obitech/python_cheatsheet#9-modules--)
 10. [I/O](https://github.com/obitech/python_cheatsheet#10-io--)
+11. [Error Handling](https://github.com/obitech/python_cheatsheet#11-error-handling--)
 * [Sources](https://github.com/obitech/python_cheatsheet#sources)
 
 ## 1. Basics
@@ -66,6 +67,13 @@ Operator | Explanation
 'A 2nd string'
 >>> print("Print a string")
 Print a string
+
+#  Removes \n
+>>> print('Hello', end='')
+
+# Separator
+>>> print('cats', 'dogs', 'mice', sep=',')
+cats,dogs,mice
 
 # Multi line '\' prevents auto-add \n
 print("""\
@@ -176,6 +184,10 @@ A list is an unordered, comma-seperated, [sequence](https://docs.python.org/3/gl
 >>> squares = [x**2 for x in range(10)]
 >>> squares
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Conditional list comprehension
+[x for x in range(...) if (...)]
+[x if (...) else (...) for x in ls]
 
 
 # Lists can be nested too
@@ -608,7 +620,20 @@ Second line of the file
 * See [docs](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects) for basic file operations.
 * See [docs](https://docs.python.org/3/tutorial/inputoutput.html#saving-structured-data-with-json) for __JSON__ conversion.
 
-
+## 11. Error Handling
+```python
+>>> def divide(n):
+...     try:
+...             return 42 / n
+...     except:
+...             print('Invalid number')
+...             return None
+... 
+>>> divide(5)
+8.4
+>>> divide(0)
+Invalid number
+```
 ## Sources
 * [docs.python.org](https://docs.python.org/3/)
 * [automatetheboringstuff.com](https://automatetheboringstuff.com)
